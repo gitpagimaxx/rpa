@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/app/">
+    <Project Path="src/Rpa.Application/Rpa.Application.csproj" Id="fc431f92-ea47-4a3d-af89-41a2dffe6a88" />
+    <Project Path="src/Rpa.Domain/Rpa.Domain.csproj" Id="62daa54b-315f-48e3-a806-cd718dcb0a4b" />
+    <Project Path="src/Rpa.Infrastructure/Rpa.Infrastructure.csproj" Id="fae431dc-eeb0-4d6c-ac3c-a97f5f00ee69" />
+    <Project Path="src/RPA.Worker/RPA.Worker.csproj" Id="b543ae49-878a-4aa5-9d7a-c1ce693f481b" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Rpa.UnitTests/Rpa.UnitTests.csproj" Id="858f93ac-2123-4fc7-b092-0236832bb1b3" />
+  </Folder>
+</Solution>
