@@ -1,5 +1,4 @@
-﻿using Rpa.Application.Abstractions;
-using Rpa.Domain.Abstractions;
+﻿using Rpa.Domain.Abstractions;
 using Rpa.Domain.Exchange;
 
 namespace Rpa.Application.UseCases.CollectUsdBrl;
@@ -10,19 +9,19 @@ public sealed class CollectUsdBrlHandler(
     IExchangeRateRepository repository,
     IClock clock)
 {
-    // Guardrails (evita lixo se parsing quebrar)
+    // Guardrails contra parsing errado
     private const decimal MinExpected = 0.50m;
     private const decimal MaxExpected = 20.00m;
 
-    public async Task<CollectUsdBrlResult> HandleAsync(CollectUsdBrlCommand _, CancellationToken ct)
+    public async Task<ExchangeRate> HandleAsync(CancellationToken ct)
     {
         var html = await htmlClient.GetUsdBrlPageHtmlAsync(ct);
 
         if (!parser.TryParseUsdBrl(html, out var rate))
-            throw new InvalidOperationException("Failed to parse USD/BRL from HTML.");
+            throw new InvalidOperationException("Could not parse USD/BRL from HTML.");
 
         if (rate < MinExpected || rate > MaxExpected)
-            throw new InvalidOperationException($"Parsed rate outside expected range: {rate}");
+            throw new InvalidOperationException($"Parsed rate outside expected range: {rate}.");
 
         var entity = ExchangeRate.Create(
             baseCurrency: Currency.USD,
@@ -33,6 +32,6 @@ public sealed class CollectUsdBrlHandler(
 
         await repository.AddAsync(entity, ct);
 
-        return new CollectUsdBrlResult(entity);
+        return entity;
     }
 }

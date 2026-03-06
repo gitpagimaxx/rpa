@@ -4,5 +4,5 @@ namespace Rpa.Domain.Abstractions;
 
 public interface IExchangeRateRepository
 {
-    Task AddAsync(ExchangeRate exchangeRate, CancellationToken ct);
+    Task AddAsync(ExchangeRate rate, CancellationToken ct);
 }
