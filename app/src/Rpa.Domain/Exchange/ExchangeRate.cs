@@ -11,7 +11,8 @@ public sealed class ExchangeRate
 
     private ExchangeRate(Guid id, Currency baseCurrency, Currency quoteCurrency, decimal rate, DateTimeOffset collectedAtUtc, DataSource source)
     {
-        if (rate <= 0) throw new ArgumentOutOfRangeException(nameof(rate));
+        if (rate <= 0) throw new ArgumentOutOfRangeException(nameof(rate), "Taxa deve ser maior que zero.");
+
         Id = id;
         BaseCurrency = baseCurrency;
         QuoteCurrency = quoteCurrency;
