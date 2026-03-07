@@ -1,0 +1,17 @@
+services:
+  worker:
+    container_name: rpa-worker
+    build:
+      context: ../app
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      Worker__IntervalSeconds: 60
+      Wise__Url: https://wise.com/br/currency-converter/dolar-hoje
+      Sqlite__ConnectionString: Data Source=/data/rpa_scraping.db;Cache=Shared
+    volumes:
+      - rpa_worker_data:/data
+
+volumes:
+  rpa_worker_data:
