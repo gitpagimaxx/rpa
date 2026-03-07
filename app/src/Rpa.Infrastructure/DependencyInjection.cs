@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AngleSharp;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
@@ -15,11 +15,11 @@ public static class DependencyInjection
     {
         services.AddSingleton<IClock, SystemClock>();
 
-        services.AddOptions<PostgresOptions>()
-            .BindConfiguration(PostgresOptions.SectionName)
-            .Validate(o => !string.IsNullOrWhiteSpace(o.ConnectionString), "Postgres connection string is required.");
+        services.AddOptions<SqliteOptions>()
+            .BindConfiguration(SqliteOptions.SectionName)
+            .Validate(o => !string.IsNullOrWhiteSpace(o.ConnectionString), "SQLite connection string is required.");
 
-        services.AddSingleton<IDbConnectionFactory, NpgsqlConnectionFactory>();
+        services.AddSingleton<IDbConnectionFactory, SqliteConnectionFactory>();
         services.AddScoped<IExchangeRateRepository, ExchangeRateRepository>();
         services.AddSingleton<DatabaseInitializer>();
 

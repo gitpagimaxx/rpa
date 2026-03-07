@@ -8,15 +8,14 @@ public sealed class DatabaseInitializer(IDbConnectionFactory factory)
     {
         using var conn = factory.Create();
 
-        // idempotente
         const string sql = """
         create table if not exists exchange_rates (
-            id uuid primary key,
-            base_currency varchar(8) not null,
-            quote_currency varchar(8) not null,
-            rate numeric(18,6) not null,
-            collected_at_utc timestamptz not null,
-            source varchar(64) not null
+            id text primary key,
+            base_currency text not null,
+            quote_currency text not null,
+            rate real not null,
+            collected_at_utc text not null,
+            source text not null
         );
 
         create index if not exists ix_exchange_rates_pair_time
