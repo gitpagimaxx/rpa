@@ -3,7 +3,7 @@ using Rpa.Domain.Exchange;
 
 namespace Rpa.Application.UseCases.CollectUsdBrl;
 
-public sealed class CollectUsdBrlHandler(
+public class CollectUsdBrlHandler(
     IExchangeRateHtmlClient htmlClient,
     IUsdBrlHtmlParser parser,
     IExchangeRateRepository repository,
