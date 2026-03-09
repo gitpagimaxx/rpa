@@ -1,5 +1,4 @@
-﻿using AngleSharp;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
 using Rpa.Domain.Abstractions;

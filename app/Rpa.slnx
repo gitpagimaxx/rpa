@@ -6,6 +6,6 @@
     <Project Path="src/RPA.Worker/RPA.Worker.csproj" Id="b543ae49-878a-4aa5-9d7a-c1ce693f481b" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Rpa.UnitTests/Rpa.UnitTests.csproj" Id="858f93ac-2123-4fc7-b092-0236832bb1b3" />
+    <Project Path="tests/Rpa.Tests/Rpa.Tests.csproj" Id="b38ef88c-330d-4413-9393-4bdc53383abe" />
   </Folder>
 </Solution>
